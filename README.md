@@ -37,11 +37,11 @@ MainSection:NewKeybind("Scam Keybind", "change the keybind to scam people!", Enu
     	game:GetService("ReplicatedStorage").RemoteEvents.Jumped:FireServer()
     end
     wait(0.24)
+    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Area.Controls.Done.Pad.CFrame + Vector3.new(0,2,0)
+    wait(0.1)
     for i = 1,10 do
     	game:GetService("ReplicatedStorage").RemoteEvents.Jumped:FireServer()
     end
-    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Area.Controls.Done.Pad.CFrame + Vector3.new(0,2,0)
-    wait(0.1)
 end)
 
 game:GetService("RunService").RenderStepped:Connect(function()
