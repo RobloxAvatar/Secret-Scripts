@@ -1,3 +1,5 @@
+--// Updated 12/25/21
+
 function makeSure()
     for i,v in pairs(game:GetService("Workspace").Boards:GetChildren()) do
         if v.Player1.Value == game:GetService("Players").LocalPlayer or v.Player2.Value == game:GetService("Players").LocalPlayer then
