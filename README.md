@@ -11,7 +11,7 @@ repeat wait() until makeSure() == true
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
-local Window = Library.CreateLib("Pop It Trading", "Synapse")
+local Window = Library.CreateLib("Pop It Trading", "Serpent")
 
 local MainTab = Window:NewTab("Main")
 
@@ -31,11 +31,17 @@ local Area = getArea()
 MainSection:NewKeybind("Scam Keybind", "change the keybind to scam people!", Enum.KeyCode.Q, function()
 	game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Area.Controls.Close.Pad.CFrame + Vector3.new(0,2,0)
     wait(0.2)
-    game:GetService("ReplicatedStorage").RemoteEvents.Jumped:FireServer()
+    local p = false
+    spawn(function()
+    	repeat
+	game:GetService("ReplicatedStorage").RemoteEvents.Jumped:FireServer()
+	wait(0.05)
+	until p == true
+    end)
     wait(0.24)
     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Area.Controls.Done.Pad.CFrame + Vector3.new(0,2,0)
-    wait(0.15)
-    game:GetService("ReplicatedStorage").RemoteEvents.Jumped:FireServer()
+    wait(0.1)
+    p = true
 end)
 
 game:GetService("RunService").RenderStepped:Connect(function()
