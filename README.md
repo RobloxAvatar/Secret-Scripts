@@ -33,17 +33,15 @@ local p = false
 MainSection:NewKeybind("Scam Keybind", "change the keybind to scam people!", Enum.KeyCode.Q, function()
 	game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Area.Controls.Close.Pad.CFrame + Vector3.new(0,2,0)
     wait(0.2)
-    p = false
-    spawn(function()
-    	repeat
-	game:GetService("ReplicatedStorage").RemoteEvents.Jumped:FireServer()
-	wait()
-	until p == true
-    end)
+    for i = 1,10 do
+    	game:GetService("ReplicatedStorage").RemoteEvents.Jumped:FireServer()
+    end
     wait(0.24)
+    for i = 1,10 do
+    	game:GetService("ReplicatedStorage").RemoteEvents.Jumped:FireServer()
+    end
     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Area.Controls.Done.Pad.CFrame + Vector3.new(0,2,0)
     wait(0.1)
-    p = true
 end)
 
 game:GetService("RunService").RenderStepped:Connect(function()
