@@ -28,14 +28,16 @@ end
 
 local Area = getArea()
 
+local p = false
+
 MainSection:NewKeybind("Scam Keybind", "change the keybind to scam people!", Enum.KeyCode.Q, function()
 	game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Area.Controls.Close.Pad.CFrame + Vector3.new(0,2,0)
     wait(0.2)
-    local p = false
+    p = false
     spawn(function()
     	repeat
 	game:GetService("ReplicatedStorage").RemoteEvents.Jumped:FireServer()
-	wait(0.05)
+	wait()
 	until p == true
     end)
     wait(0.24)
